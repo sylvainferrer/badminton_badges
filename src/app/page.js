@@ -1,3 +1,5 @@
+
+import Image from "next/image";
 export default function Home() {
   return (
     <div>
@@ -6,7 +8,7 @@ export default function Home() {
             <div className="flex justify-between h-16">
                 <div className="flex items-center">
                     <div className="flex-shrink-0 flex items-center">
-                          <img src="../volant.svg" alt="Badminton Icon" className="w-8 h-8 mr-2" />
+                          <Image src="../volant.svg" alt="Badminton Icon" className="w-8 h-8 mr-2" />
                           <span className="text-xl font-bold text-gray-900">Badminton Analytics</span>
                     </div>
                 </div>
