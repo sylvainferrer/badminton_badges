@@ -1,5 +1,9 @@
 import Image from "next/image";
+import * as d3 from "d3";
+import Badminton_court from "@/components/Badminton_court";
+
 export default function Home() {
+    
   return (
     <div>
         <nav className="bg-white shadow-lg">
@@ -31,13 +35,16 @@ export default function Home() {
     </nav>
     <div>
         <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl font-extrabold tracking-tight text-indigo-600 sm:text-5xl lg:text-6xl">
                 Analysez le jeu de vos élèves avec précision
             </h1>
-            <p className="mt-6 max-w-3xl mx-auto text-xl text-indigo-100">
+            <p className="mt-6 max-w-3xl mx-auto text-xl text-indigo-300">
                 Découvrez des insights avancés sur les performances au badminton grâce à notre technologie d'analyse vidéo et de suivi des données.
             </p>
         </div>
+    </div>
+    <div className="py-20 px-10 bg-[#2196f3]">
+       <Badminton_court/>
     </div>
     </div>
   );
