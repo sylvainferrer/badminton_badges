@@ -43,7 +43,7 @@ return (
                             Analysez le jeu de vos élèves avec précision
                     </h1>
                     <p className="mt-6 max-w-3xl mx-auto text-xl text-indigo-300">
-                            Découvrez des insights avancés sur les performances au badminton grâce à notre technologie d'analyse et de suivi des données.
+                            {`Découvrez des insights avancés sur les performances au badminton grâce à notre technologie d'analyse et de suivi des données.`}
                     </p>
             </div>
     </div>
