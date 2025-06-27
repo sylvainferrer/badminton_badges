@@ -3,3 +3,68 @@
 body{
   background-color: #fff;
 }
+.grid-container {
+  display: grid;
+  /* On étire en largeur, et on impose le ratio d'aspect 13400/6100 */
+  width: 100%;
+  aspect-ratio: 13400 / 6100;
+  justify-content: center;
+  align-content: center;
+  /* Gouttières internes et marge extérieure de 40 mm */
+  column-gap: 0.2985%; /* 40mm / 13400mm */
+  row-gap: 0.6557%; /* 40mm / 6100mm */
+
+  /* Colonnes proportionnelles (sans compter les 7 gouttières de 40 mm) */
+  grid-template-columns:
+    5.3731% /* 720mm / 13400mm */
+    28.9552% /* 3880mm / 13400mm */
+    14.6269% /* 1960mm / 13400mm */
+    14.6269% /* idem */
+    28.9552% /* idem */
+    5.3731%; /* idem */
+  
+  /* Lignes proportionnelles (sans compter les 5 gouttières de 40 mm) */
+  grid-template-rows:
+    6.8852%  /* 420mm / 6100mm */
+    41.4754% /* 2530mm / 6100mm */
+    41.4754% /* idem */
+    6.8852%; /* idem */
+}
+.grid-item{
+  background-color: darkgreen;
+  font-size: 0;
+}
+.fusion-1 {
+    grid-column: 3;
+    grid-row: 2 / span 2;
+}
+.fusion-2{
+    grid-column: 4;
+    grid-row: 2 / span 2;
+}
+.court {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.court-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(255, 0, 0, 0);
+  z-index: 10;
+}
+.court-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-color: rgba(0, 0, 255, 0);
+  z-index: 10;
+}
+.court-lines{
+  fill:#fff
+}
