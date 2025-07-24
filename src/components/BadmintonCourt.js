@@ -3,11 +3,10 @@
 import { useState, useRef, useEffect } from "react";
 
 const colorMap = {
-  "Point direct": "#7f22fe",
+  "Point direct": "#f0b100",
   "Faute provoquée": "#c10007",
-  "Maladresse adverse": "#f0b100",
-  "Coup de chance": "#008236",
-  Annulé: "#4a5565",
+  "Maladresse adverse": "#8200db",
+  "Coup de chance": "#432dd7",
 };
 
 const players = ["Joueur A", "Joueur B", "Lucas", "Emma", "Maxime"];
@@ -301,6 +300,8 @@ export default function BadmintonCourt({
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 496 638.44"
                 fill={colorMap[data.itemMenu] || "#ffba00"}
+                stroke="black"
+                strokeWidth="10"
                 className="w-3 h-auto sm:w-3 md:w-4 lg:w-[20px]"
               >
                 <g>
@@ -380,10 +381,10 @@ export default function BadmintonCourt({
             "Annulé",
           ].map((label, index) => {
             const colors = [
-              "bg-violet-600",
-              "bg-red-700",
               "bg-yellow-500",
-              "bg-green-700",
+              "bg-red-700",
+              "bg-purple-700",
+              "bg-indigo-700",
               "bg-gray-500",
             ];
             return (
