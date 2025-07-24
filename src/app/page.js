@@ -1,7 +1,9 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import Badminton_court_2 from "@/components/Badminton_court_2";
+import BadmintonCourt from "@/components/BadmintonCourt";
+import StatsCharts from "@/components/StatsCharts";
+
 
 export default function Home() {
   const [leftCoords, setLeftCoords] = useState({});
@@ -103,7 +105,7 @@ export default function Home() {
         {console.log("rightCoords:", rightCoords)}
 
         <div className="p-8">
-          <Badminton_court_2
+          <BadmintonCourt
             leftCoords={leftCoords}
             rightCoords={rightCoords}
             setLeftCoords={setLeftCoords}
@@ -118,6 +120,7 @@ export default function Home() {
             <h2 className="text-2xl font-bold mb-4 text-slate-800">
             Statistiques des joueurs
           </h2>
+          <StatsCharts stats={stats} />
           </div>  
       </div>
     </div>
