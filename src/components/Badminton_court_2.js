@@ -3,12 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 
 const colorMap = {
-  "Point direct": "#fb2c36",
-  "Faute provoquée": "#f0b100",
-  "Maladresse adverse": "#ff6900",
-  "Coup de chance": "#e12afb",
-  "Annulé": "#9ca3af",
-  "Faute au service": "#1e2939"
+  "Point direct": "#7f22fe",
+  "Faute provoquée": "#c10007",
+  "Maladresse adverse": "#f0b100",
+  "Coup de chance": "#008236",
+  Annulé: "#4a5565",
 };
 
 const players = ["Joueur A", "Joueur B", "Lucas", "Emma", "Maxime"];
@@ -162,7 +161,14 @@ export default function BadmintonCourt({
   const getSecondOptions = (zone) => {
     if (zone === "Avant") return ["Amorti", "Contre-amorti", "Autre"];
     if (zone === "Médiane")
-      return ["Amorti", "Smash", "Drive", "Dégager", "Service gagnant", "Autre"];
+      return [
+        "Amorti",
+        "Smash",
+        "Drive",
+        "Dégager",
+        "Service gagnant",
+        "Autre",
+      ];
     if (zone === "Arrière")
       return ["Dégager", "Lift", "Drive", "Smash", "Service gagnant", "Autre"];
     return [];
@@ -170,7 +176,11 @@ export default function BadmintonCourt({
 
   const handleServiceFault = (faultSide) => {
     const newId = Object.keys(points).length + 1;
-    const newData = { itemMenu: "Faute au service", coords: null, side: faultSide };
+    const newData = {
+      itemMenu: "Faute au service",
+      coords: null,
+      side: faultSide,
+    };
 
     setPoints((prev) => ({ ...prev, [newId]: newData }));
 
@@ -197,7 +207,7 @@ export default function BadmintonCourt({
       <div className="flex justify-center gap-4 px-4 mb-4">
         {/* Joueur A */}
         <div className="text-white rounded-lg p-3 flex items-center">
-          <div className="flex flex-col bg-emerald-500 rounded-lg p-3 m-2">
+          <div className="flex flex-col bg-emerald-600 rounded-lg p-3 m-2">
             <label className="text-sm font-semibold mb-1">Joueur A</label>
             <select
               value={playerA}
@@ -211,7 +221,7 @@ export default function BadmintonCourt({
               ))}
             </select>
           </div>
-          <div className="flex flex-col bg-emerald-500 rounded-lg p-3 items-center m-2">
+          <div className="flex flex-col bg-emerald-600 rounded-lg p-3 items-center m-2">
             <label className="text-sm font-semibold mb-1">Score</label>
             <span className="text-xl font-bold">{scoreA}</span>
           </div>
@@ -219,11 +229,11 @@ export default function BadmintonCourt({
 
         {/* Joueur B */}
         <div className=" text-white rounded-lg p-3 flex items-center">
-          <div className="flex flex-col bg-blue-500 rounded-lg p-3 items-center m-2">
+          <div className="flex flex-col bg-cyan-600 rounded-lg p-3 items-center m-2">
             <label className="text-sm font-semibold mb-1">Score</label>
             <span className="text-xl font-bold">{scoreB}</span>
           </div>
-          <div className="flex flex-col items- bg-blue-500 rounded-lg p-3 m-2">
+          <div className="flex flex-col items- bg-cyan-600 rounded-lg p-3 m-2">
             <label className="text-sm font-semibold mb-1">Joueur B</label>
             <select
               value={playerB}
@@ -240,7 +250,7 @@ export default function BadmintonCourt({
         </div>
       </div>
       <div
-        className="court bg-[linear-gradient(to_right,_#10b981_50%,_#3b82f6_50%)] relative"
+        className="court bg-[linear-gradient(to_right,_#009966_50%,_#0092b8_50%)] relative"
         ref={courtRef}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3798.43 1729.13">
@@ -327,6 +337,8 @@ export default function BadmintonCourt({
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 496 638.44"
                 fill={colorMap[data.itemMenu] || "#ffba00"}
+                stroke="black"
+                strokeWidth="10"
                 className="w-3 h-auto sm:w-3 md:w-4 lg:w-[20px]"
               >
                 <g>
@@ -345,20 +357,16 @@ export default function BadmintonCourt({
       <div className="flex justify-between mt-2 px-4">
         <button
           onClick={() => handleServiceFault("left")}
-          className="bg-emerald-500 text-white px-3 py-2 rounded cursor-pointer"
+          className="bg-emerald-600 text-white px-3 py-2 rounded cursor-pointer"
         >
           Faute au service
-          <br />
-          (Joueur A)
         </button>
 
         <button
           onClick={() => handleServiceFault("right")}
-          className="bg-blue-500 text-white px-3 py-2 rounded cursor-pointer"
+          className="bg-cyan-600 text-white px-3 py-2 rounded cursor-pointer"
         >
           Faute au service
-          <br />
-          (Joueur B)
         </button>
       </div>
 
@@ -372,11 +380,11 @@ export default function BadmintonCourt({
             "Annulé",
           ].map((label, index) => {
             const colors = [
-              "bg-red-500",
+              "bg-violet-600",
+              "bg-red-700",
               "bg-yellow-500",
-              "bg-orange-500",
-              "bg-fuchsia-500",
-              "bg-gray-800",
+              "bg-green-700",
+              "bg-gray-500",
             ];
             return (
               <button
