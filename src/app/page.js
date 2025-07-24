@@ -5,8 +5,13 @@ import Badminton_court_2 from "@/components/Badminton_court_2"
 
 export default function Home() {
 
-    const [leftCoords,  setLeftCoords]  = useState([]);
-    const [rightCoords, setRightCoords] = useState([]);
+    const [leftCoords,  setLeftCoords]  = useState({});
+    const [rightCoords, setRightCoords] = useState({});
+
+    const [stats, setStats] = useState({
+  joueurA: { nom: "Joueur A", stats: {} },
+  joueurB: { nom: "Joueur B", stats: {} }
+});
 
 return (
     <div>
@@ -47,28 +52,29 @@ return (
                     </p>
             </div>
     </div>
-    <div className="pt-8 bg-indigo-600">
+    <div className="pt-8 pb-16 bg-gray-600">
         <div className="px-8">
             <h2 className="text-2xl font-bold mb-4 text-white">Coordonnées des clics</h2>
             <p className=" text-white">Cliquez sur le terrain pour ajouter des points.</p>
-            <p className=" text-white">Les points jaunes représentent les clics sur le côté gauche, et les points rouges représentent les clics sur le côté droit.</p>
         </div>
-        <div className="px-8 text-white mt-6">
-            <strong>Coordonnées (format JSON):</strong><br />
-            <strong>leftCoords:</strong> {JSON.stringify(leftCoords)}<br />
-            <strong>rightCoords:</strong> {JSON.stringify(rightCoords)}<br />
+
+         <div className="px-8 text-white mt-6">
+        <strong>Données par joueur :</strong><br />
+            {JSON.stringify(stats, null, 2)}
         </div>
-        <div className="flex justify-between px-8 text-white mt-6">
-            <p><strong>Gauche :</strong> {Object.keys(leftCoords).length} points</p>
-            <p><strong>Droite :</strong> {Object.keys(rightCoords).length} points</p>
-        </div>
+       
+
+        {console.log("leftCoords:", leftCoords)}
+        {console.log("rightCoords:", rightCoords)}
 
         <div className="p-8">
             <Badminton_court_2 
                 leftCoords={leftCoords}
-                setLeftCoords={setLeftCoords}
                 rightCoords={rightCoords}
+                setLeftCoords={setLeftCoords}
                 setRightCoords={setRightCoords}
+                stats={stats}
+                setStats={setStats}
             />
         </div>
     </div>
